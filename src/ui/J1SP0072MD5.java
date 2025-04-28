@@ -42,13 +42,8 @@ public class J1SP0072MD5 {
                         System.out.println("Login failed. Invalid username or password.");
                     }
                     break;
-
                 case 3:
-                    System.out.println("Goodbye!");
                     return;
-
-                default:
-                    throw new AssertionError();
             }
         }
     }

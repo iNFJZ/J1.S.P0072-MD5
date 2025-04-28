@@ -38,8 +38,4 @@ public class AccountManager {
         }
         return false;
     }
-
-    public List<Account> getAccounts() {
-        return accounts;
-    }
 }

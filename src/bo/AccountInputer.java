@@ -21,22 +21,18 @@ public class AccountInputer {
 
     public Account inputInformationAccount() {
         account = new Account();
-        account.setUsername(ValidationAndNormalizingTextUtil.getNonEmptyString("Enter username: "));
+        String username = ValidationAndNormalizingTextUtil.getNonEmptyString("Enter username: ");
+        account.setUsername(username);
         String password = ValidationAndNormalizingTextUtil.getNonEmptyString("Enter password: ");
         account.setPassword(ValidationAndNormalizingTextUtil.md5Encrypt(password));
         account.setName(ValidationAndNormalizingTextUtil.getStringByRegex("Enter name: ", "Please enter character only!", "[A-Za-z ]+"));
         account.setPhone(ValidationAndNormalizingTextUtil.getPhone(10, "Enter phone number: "));
-        account.setEmail(ValidationAndNormalizingTextUtil.getEmail("Enter email: "));
+        String email = ValidationAndNormalizingTextUtil.getEmail("Enter email: ");
+        account.setEmail(email);
         account.setAddress(ValidationAndNormalizingTextUtil.getNonEmptyString("Enter address: "));
         account.setDateOfBirth(ValidationAndNormalizingTextUtil.getDate("Enter date (dd/MM/yyyy): "));
+
         return account;
     }
 
-    public String[] inputLoginCredentials() {
-        String[] credentials = new String[2];
-        credentials[0] = ValidationAndNormalizingTextUtil.getNonEmptyString("Enter username: ");
-        String password = ValidationAndNormalizingTextUtil.getNonEmptyString("Enter password: ");
-        credentials[1] = ValidationAndNormalizingTextUtil.md5Encrypt(password);
-        return credentials;
-    }
 }
