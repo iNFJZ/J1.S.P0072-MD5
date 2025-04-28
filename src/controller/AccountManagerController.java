@@ -7,6 +7,7 @@ package controller;
 import bo.AccountInputer;
 import bo.AccountManager;
 import entity.Account;
+import utils.ValidationAndNormalizingTextUtil;
 
 /**
  *
@@ -14,12 +15,13 @@ import entity.Account;
  */
 public class AccountManagerController {
 
-    private AccountInputer accountInputer;
     private AccountManager accountManager;
+    private AccountInputer accountInputer;
+    private String currentUsername;
 
     public AccountManagerController() {
-        accountInputer = new AccountInputer();
         accountManager = new AccountManager();
+        accountInputer = new AccountInputer();
     }
 
     public Account addAcount() throws Exception {
@@ -32,10 +34,14 @@ public class AccountManagerController {
 
     public boolean login() {
         String[] credentials = accountInputer.inputLoginCredentials();
-        return accountManager.login(credentials[0], credentials[1]);
+        boolean result = accountManager.login(credentials[0], credentials[1]);
+        if (result) {
+            currentUsername = credentials[0];
+        }
+        return result;
     }
-    
+
     public String getUsername() {
-        return accountInputer.getAccount().getUsername();
+        return currentUsername;
     }
 }

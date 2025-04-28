@@ -15,25 +15,31 @@ import java.util.List;
 public class AccountManager {
 
     private List<Account> accounts;
-    private int lastId;
 
     public AccountManager() {
         accounts = new ArrayList<>();
-        lastId = 0;
     }
 
-    public boolean addAccount(Account account) {
-        account.setId(++lastId);
+    public boolean addAccount(Account account) throws Exception {
+        for (Account acc : accounts) {
+            if (acc.getUsername().equals(account.getUsername())) {
+                throw new Exception("Username already exists!");
+            }
+        }
+
         return accounts.add(account);
     }
 
-    public boolean login(String username, String encryptedPassword) {
+    public boolean login(String username, String password) {
         for (Account account : accounts) {
-            if (account.getUsername().equals(username)
-                    && account.getPassword().equals(encryptedPassword)) {
+            if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
     }
 }

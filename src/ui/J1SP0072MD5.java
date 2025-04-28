@@ -30,7 +30,7 @@ public class J1SP0072MD5 {
                 case 1:
                     try {
                         Account account = controller.addAcount();
-                        System.out.println("Account added successfully with ID: " + account.getId());
+                        System.out.println("Account added successfully!");
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());
                     }

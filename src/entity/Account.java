@@ -11,7 +11,6 @@ import java.util.Date;
  * @author iNJZ
  */
 public class Account {
-    private int id;
     private String username;
     private String password;
     private String name;
@@ -23,8 +22,7 @@ public class Account {
     public Account() {
     }
 
-    public Account(int id, String username, String password, String name, String phone, String email, String address, Date dateOfBirth) {
-        this.id = id;
+    public Account(String username, String password, String name, String phone, String email, String address, Date dateOfBirth) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -32,14 +30,6 @@ public class Account {
         this.email = email;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -100,7 +90,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", username=" + username + ", password=" + password + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address=" + address + ", dateOfBirth=" + dateOfBirth + '}';
+        return "Account{" + "username=" + username + ", password=" + password + ", name=" + name + ", phone=" + phone + ", email=" + email + ", address=" + address + ", dateOfBirth=" + dateOfBirth + '}';
     }
     
     
