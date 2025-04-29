@@ -21,13 +21,13 @@ public class AccountInputer {
 
     public Account inputInformationAccount() {
         account = new Account();
-        String username = ValidationAndNormalizingTextUtil.getNonEmptyString("Enter username: ");
+        String username = ValidationAndNormalizingTextUtil.getNonEmptyStringWithoutSpace("Enter username: ");
         account.setUsername(username);
         String password = ValidationAndNormalizingTextUtil.getNonEmptyString("Enter password: ");
         account.setPassword(ValidationAndNormalizingTextUtil.md5Encrypt(password));
         account.setName(ValidationAndNormalizingTextUtil.getStringByRegex("Enter name: ", "Please enter character only!", "[A-Za-z ]+"));
         account.setPhone(ValidationAndNormalizingTextUtil.getPhone(10, "Enter phone number: "));
-        String email = ValidationAndNormalizingTextUtil.getEmail("Enter email: ");
+        String email = ValidationAndNormalizingTextUtil.getEmailWithoutSpace("Enter email: ");
         account.setEmail(email);
         account.setAddress(ValidationAndNormalizingTextUtil.getNonEmptyString("Enter address: "));
         account.setDateOfBirth(ValidationAndNormalizingTextUtil.getDate("Enter date (dd/MM/yyyy): "));

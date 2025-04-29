@@ -64,6 +64,24 @@ public class ValidationAndNormalizingTextUtil {
         }
     }
 
+    public static String getNonEmptyStringWithoutSpace(String mess) {
+        String ret = "";
+        Scanner scan = new Scanner(System.in);
+        while (true) {
+            System.out.print(mess);
+            ret = removeUnnecessaryBlank(scan.nextLine());
+            if (ret.equalsIgnoreCase("")) {
+                System.err.println("Please input Non-Empty String!!!");
+                continue;
+            }
+            if (ret.contains(" ")) {
+                System.err.println("Please input Non-Space String!!!");
+                continue;
+            }
+            return ret;
+        }
+    }
+
     public static String normalFormStringAfterDot(String input) {
         String output = "";
         input = removeUnnecessaryBlank(input);
@@ -126,8 +144,22 @@ public class ValidationAndNormalizingTextUtil {
         return email;
     }
 
+    public static String getEmailWithoutSpace(String mess) {
+        String regex = "^[A-Za-z](.*)([@]{1})(.{2,})(\\.)(.{2,})";//phai bat dau bang chu cai
+        while (true) {
+            String email = getStringByRegex(mess, "Please enter email with format <account name>@<domain>", regex);
+            if (email.contains(" ")) {
+                System.err.println("Please input Non-Space String!!!");
+                continue;
+            } else {
+                return email;
+
+            }
+        }
+    }
+
     public static String getPhone(int minLength, String mess) {
-        String regex = "[0-9 ]+";
+        String regex = "[0-9]+";
         while (true) {
             String phoneNum = getStringByRegex(mess, "Please enter number only!!", regex).replaceAll("\\s+", "");
             if (phoneNum.length() < minLength) {

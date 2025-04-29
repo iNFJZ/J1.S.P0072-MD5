@@ -26,7 +26,6 @@ public class AccountManager {
                 throw new Exception("Username already exists!");
             }
         }
-
         return accounts.add(account);
     }
 
